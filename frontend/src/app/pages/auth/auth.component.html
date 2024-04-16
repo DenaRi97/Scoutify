@@ -12,6 +12,13 @@
     
     <form [formGroup]="formUser" class="mx-auto max-w-md">
     
+         <!-- Campo Oculto -->
+         <section class="mx-auto max-w-md mb-4 lg:mb-6" style="display: none;">
+            <label class="input input-bordered flex items-center gap-4">
+                <input type="hidden" formControlName="hiddenField">
+            </label>
+        </section>
+
         <!-- NOMBRE DE USUARIO -->
         <section class="mx-auto max-w-md mb-4 lg:mb-6">
             <label class="input input-bordered flex items-center gap-4">

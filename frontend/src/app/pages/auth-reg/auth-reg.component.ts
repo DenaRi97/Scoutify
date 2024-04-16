@@ -47,7 +47,9 @@ export class AuthRegComponent {
         'email': new FormControl('', [Validators.required, Validators.email]),
         'password': new FormControl('', [Validators.required, Validators.minLength(8), Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/)]),
         'repeatPassword': new FormControl('', Validators.required),
-        'terms': new FormControl(false) // Add a FormControl for the checkbox
+        'terms': new FormControl(false), // Add a FormControl for the checkbox
+        'hiddenField': new FormControl('') // Agrega este control para el campo oculto
+
     }, { validators: this.passwordMatchValidator }); // Add custom validator for matching passwords)
 
     //Constructor para las rutas de navegación de la pagina
