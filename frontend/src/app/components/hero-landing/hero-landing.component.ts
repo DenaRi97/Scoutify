@@ -1,7 +1,5 @@
 import { Component, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { LoginFormComponent } from '../login-form/login-form.component';
-import { RegisterFormComponent } from '../register-form/register-form.component';
 import { FooterComponent } from "../footer/footer.component";
 
 @Component({
@@ -9,7 +7,7 @@ import { FooterComponent } from "../footer/footer.component";
     standalone: true,
     templateUrl: './hero-landing.component.html',
     styleUrl: './hero-landing.component.css',
-    imports: [LoginFormComponent, RegisterFormComponent, FooterComponent]
+    imports: [FooterComponent]
 })
 export class HeroLandingComponent implements AfterViewInit {
 
@@ -20,9 +18,15 @@ export class HeroLandingComponent implements AfterViewInit {
 
   constructor(private router: Router) {} // Inject Router service
 
+  navigateToAuth() {
+    this.router.navigate(["/login"]);
+  }
+  navigateToAuthRegister() {
+    this.router.navigate(["/register"]);
+  }
+  
   navigateToLogin() {
     this.router.navigate(['/login']); //Ruta que navega al componente login, importar el componente
-    
   }
   navigateToRegister() {
     this.router.navigate(['/register']); 
