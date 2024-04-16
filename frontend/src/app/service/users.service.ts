@@ -18,7 +18,7 @@ export class UsersService {
       email: newUser.email
     };
 
-    return this.http.post('https://scouzpro-znd8.onrender.com/auth/register', userData);
+    return this.http.post('https://scoutify-secure-back.onrender.com/auth/register', userData);
   }
 
   loginUser(credentials: any): Observable<any> {
@@ -27,7 +27,7 @@ export class UsersService {
       password: credentials.password
     };
 
-    return this.http.post('https://scouzpro-znd8.onrender.com/auth/login', loginData);
+    return this.http.post('https://scoutify-secure-back.onrender.com/auth/login', loginData);
   }
 
 }
