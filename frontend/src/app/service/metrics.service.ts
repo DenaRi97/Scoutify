@@ -11,7 +11,7 @@ export class MetricsService {
 
   async getPlayerMetrics(playerId: string): Promise<any> {
     try {
-      const response = await axios.get(`https://scouzpro-znd8.onrender.com/metrics/${playerId}`);
+      const response = await axios.get(`https://scoutify-secure-back.onrender.com/metrics/${playerId}`);
       
       
       // Verifica si la respuesta es un objeto
@@ -32,7 +32,7 @@ export class MetricsService {
 
   async submitMetrics(formData: any): Promise<any> {
     try {
-      const response = await axios.post('https://scouzpro-znd8.onrender.com/metrics', formData);
+      const response = await axios.post('https://scoutify-secure-back.onrender.com/metrics', formData);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -41,7 +41,7 @@ export class MetricsService {
   }
   async editPlayerMetrics(playerId: string, updatedMetrics: any): Promise<any> {
     try {
-      const response = await axios.put(`https://scouzpro-znd8.onrender.com/metrics/${playerId}`, updatedMetrics);
+      const response = await axios.put(`https://scoutify-secure-back.onrender.com/metrics/${playerId}`, updatedMetrics);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -56,7 +56,7 @@ export class MetricsService {
           'auth': localStorage.getItem('token admin')!
         }
       }
-      const response = await axios.delete(`https://scouzpro-znd8.onrender.com/metrics/${_id}`, options);
+      const response = await axios.delete(`https://scoutify-secure-back.onrender.com/metrics/${_id}`, options);
       return response.data;
     } catch (error) {
       console.error(error);
@@ -66,7 +66,7 @@ export class MetricsService {
 
   async getPlayerMetricsById(playerId: string): Promise<any> {
     try {
-      const response = await axios.get(`https://scouzpro-znd8.onrender.com/metrics/${playerId}`);      
+      const response = await axios.get(`https://scoutify-secure-back.onrender.com/metrics/${playerId}`);      
       return response.data;
     } catch (error) {
       console.error(error);
