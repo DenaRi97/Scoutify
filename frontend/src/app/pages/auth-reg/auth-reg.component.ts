@@ -122,6 +122,7 @@ export class AuthRegComponent implements OnInit {
 
     private handleToken(token: string) {
         console.log('Received token:', token);
+        this.reCAPTCHAToken = token;
         this.sendTokenToServer(token);
     }
     private sendTokenToServer(token: string) {
