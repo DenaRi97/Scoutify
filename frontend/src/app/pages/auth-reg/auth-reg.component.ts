@@ -93,6 +93,12 @@ export class AuthRegComponent {
     }
     showTermsError = false; // Variable to track the error message for terms acceptance
    
+    //Captcha response
+    onCaptchaResolved(captchaResponse: string) {
+        // Manejar la respuesta del reCAPTCHA aquí
+        console.log('Respuesta de reCAPTCHA:', captchaResponse);
+      }
+
     onSubmit() {
         if (this.formNewUser.valid && !this.formNewUser.errors?.['mismatch'] && this.formNewUser.get('terms')?.value) {
             // Hide the error message if there's no error

@@ -6,14 +6,14 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { HeroLandingComponent } from './components/hero-landing/hero-landing.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { VideosComponent } from './components/videos/videos.component';
-
+import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from "ng-recaptcha";
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [RouterOutlet, ReactiveFormsModule, NavbarComponent , FooterComponent, LandingComponent, HeroLandingComponent, VideosComponent]
+    imports: [RouterOutlet, ReactiveFormsModule, NavbarComponent , FooterComponent, LandingComponent, HeroLandingComponent, VideosComponent, RecaptchaV3Module]
 })
 export class AppComponent {
   title = 'Scoutify';
