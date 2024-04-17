@@ -5,6 +5,9 @@ import { UsersService } from '../../service/users.service';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from '../../components/footer/footer.component';
+import { ReCaptchaV3Service } from 'ng-recaptcha';
+import { RecaptchaService } from '../../service/recaptcha.service';
+
 
 @Component({
     selector: 'app-auth-reg',
@@ -53,7 +56,12 @@ export class AuthRegComponent {
     }, { validators: this.passwordMatchValidator }); // Add custom validator for matching passwords)
 
     //Constructor para las rutas de navegación de la pagina
-    constructor (private userService: UsersService, private router: Router) {}
+    constructor (
+        private userService: UsersService,
+        private router: Router,
+        private recaptchaV3Service: ReCaptchaV3Service,
+        private recaptchaService: RecaptchaService
+    ) {}
 
     navigateToHeroLanding() { //Ruta que vueve a landing al pulsar btn
         this.router.navigate([""]);
@@ -93,14 +101,29 @@ export class AuthRegComponent {
     }
     showTermsError = false; // Variable to track the error message for terms acceptance
    
-    //Captcha response
-    onCaptchaResolved(captchaResponse: string) {
-        // Manejar la respuesta del reCAPTCHA aquí
-        console.log('Respuesta de reCAPTCHA:', captchaResponse);
-      }
+    //RECAPTCHA
+    public executeImportantAction(): void {
+        this.recaptchaV3Service.execute('importantAction')
+          .subscribe((token) => this.handleToken(token));
+    }
 
+    private handleToken(token: string) {
+        console.log('Received token:', token);
+        this.sendTokenToServer(token);
+    }
+    private sendTokenToServer(token: string) {
+        // Use RecaptchaService to send token to the server
+        const serverResponse = this.recaptchaService.getToken(token);
+        console.log('Server response:', serverResponse);
+        // Handle server response accordingly
+    }
+
+    reCAPTCHAToken: string = "6LeF0LwpAAAAACQtZffPMePqsmN6ZzqFGXogpn5u";
+    tokenVisible: boolean = false;
+
+    //ONSUBMIT
     onSubmit() {
-        if (this.formNewUser.valid && !this.formNewUser.errors?.['mismatch'] && this.formNewUser.get('terms')?.value) {
+        if (this.formNewUser.valid && !this.formNewUser.errors?.['mismatch'] && this.formNewUser.get('terms')?.value && this.tokenVisible && this.reCAPTCHAToken) {
             // Hide the error message if there's no error
             this.showTermsError = false;
             // Llama al servicio para crear el nuevo usuario
@@ -114,12 +137,19 @@ export class AuthRegComponent {
                 },
                 error => {
                     console.error('Error al crear el usuario:', error);
-                }
+                }           
             );
+            //Maneja submit token del captcha
+            this.recaptchaV3Service.execute('importantAction').subscribe((token: string) => {
+                if (token) { //verifica si el token no es nulo
+                    this.tokenVisible = true;
+                    this.reCAPTCHAToken = `Token [${token}] generated`;
+                }
+            });
         } else {
             this.showTermsError = true;
             if (this.formNewUser.hasError('mismatch')) {
-                // Handle mismatch error
+                console.log(Error) // Handle mismatch error
             }
         }
         

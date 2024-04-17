@@ -6,7 +6,9 @@ import { LandingComponent } from './pages/landing/landing.component';
 import { HeroLandingComponent } from './components/hero-landing/hero-landing.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { VideosComponent } from './components/videos/videos.component';
-import { RECAPTCHA_V3_SITE_KEY, RecaptchaV3Module } from "ng-recaptcha";
+// import { BrowserModule } from '@angular/platform-browser';
+import { RecaptchaV3Module } from 'ng-recaptcha';
+
 
 @Component({
     selector: 'app-root',
