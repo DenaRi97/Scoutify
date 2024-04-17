@@ -23,7 +23,4 @@ export class RecaptchaService {
       return 'false'
     }
   }
-
-
-
 }

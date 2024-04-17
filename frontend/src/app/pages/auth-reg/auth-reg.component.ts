@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { UsersService } from '../../service/users.service';
@@ -16,7 +16,7 @@ import { RecaptchaService } from '../../service/recaptcha.service';
     imports :[FooterComponent, CommonModule, ReactiveFormsModule],
     styleUrls: ['./auth-reg.component.css']
 })
-export class AuthRegComponent {
+export class AuthRegComponent implements OnInit {
     showSuccessMessage = false;
     //VALIDACIONES
     //GETTERS
@@ -63,6 +63,19 @@ export class AuthRegComponent {
         private recaptchaService: RecaptchaService
     ) {}
 
+    ngOnInit() {
+        // Llamar a executeImportantAction() para obtener el token al inicializar el componente
+        this.executeImportantAction();
+    }
+
+    executeImportantAction(): void {
+        this.recaptchaV3Service.execute('importantAction').subscribe((token: string) => {
+            if (token) {
+                this.reCAPTCHAToken = token;
+            }
+        });
+    }
+
     navigateToHeroLanding() { //Ruta que vueve a landing al pulsar btn
         this.router.navigate([""]);
     }
@@ -102,10 +115,10 @@ export class AuthRegComponent {
     showTermsError = false; // Variable to track the error message for terms acceptance
    
     //RECAPTCHA
-    public executeImportantAction(): void {
-        this.recaptchaV3Service.execute('importantAction')
-          .subscribe((token) => this.handleToken(token));
-    }
+    // public executeImportantAction(): void {
+    //     this.recaptchaV3Service.execute('importantAction')
+    //       .subscribe((token) => this.handleToken(token));
+    // }
 
     private handleToken(token: string) {
         console.log('Received token:', token);
@@ -123,7 +136,7 @@ export class AuthRegComponent {
 
     //ONSUBMIT
     onSubmit() {
-        if (this.formNewUser.valid && !this.formNewUser.errors?.['mismatch'] && this.formNewUser.get('terms')?.value && this.tokenVisible && this.reCAPTCHAToken) {
+        if (this.formNewUser.valid && !this.formNewUser.errors?.['mismatch'] && this.formNewUser.get('terms')?.value && this.reCAPTCHAToken) {
             // Hide the error message if there's no error
             this.showTermsError = false;
             // Llama al servicio para crear el nuevo usuario
@@ -140,12 +153,12 @@ export class AuthRegComponent {
                 }           
             );
             //Maneja submit token del captcha
-            this.recaptchaV3Service.execute('importantAction').subscribe((token: string) => {
-                if (token) { //verifica si el token no es nulo
-                    this.tokenVisible = true;
-                    this.reCAPTCHAToken = `Token [${token}] generated`;
-                }
-            });
+            // this.recaptchaV3Service.execute('importantAction').subscribe((token: string) => {
+            //     if (token) { //verifica si el token no es nulo
+            //         this.tokenVisible = true;
+            //         this.reCAPTCHAToken = `Token [${token}] generated`;
+            //     }
+            // });
         } else {
             this.showTermsError = true;
             if (this.formNewUser.hasError('mismatch')) {
