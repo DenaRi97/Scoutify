@@ -9,5 +9,5 @@ export const appConfig: ApplicationConfig = {
   providers: 
   [provideRouter(routes), 
     provideHttpClient(),
-  { provide: RECAPTCHA_V3_SITE_KEY, useValue: "6LeF0LwpAAAAAPV1jwHcK1gmIOYHjQb3DZC028rF" }] 
+  { provide: RECAPTCHA_V3_SITE_KEY, useValue: "6LeF0LwpAAAAACQtZffPMePqsmN6ZzqFGXogpn5u" }] 
 }
