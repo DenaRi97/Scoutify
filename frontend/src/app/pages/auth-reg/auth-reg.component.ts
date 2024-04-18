@@ -132,7 +132,7 @@ export class AuthRegComponent implements OnInit {
         // Handle server response accordingly
     }
 
-    reCAPTCHAToken: string = "6LeF0LwpAAAAAPV1jwHcK1gmIOYHjQb3DZC028rF";
+    reCAPTCHAToken: string = "6LeF0LwpAAAAACQtZffPMePqsmN6ZzqFGXogpn5u";
     tokenVisible: boolean = false;
 
     //ONSUBMIT
