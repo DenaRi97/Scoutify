@@ -55,6 +55,25 @@ export class AuthRegComponent implements OnInit {
 
     }, { validators: this.passwordMatchValidator }); // Add custom validator for matching passwords)
 
+    //Alertas
+    showAlert= false;
+    alertMessage: string = '';
+    AlertMessage = false
+
+    //Alerta campos ocultos
+    OnInit(): void {
+        // Agrega un evento de detección de cambios en el campo oculto
+        this.formNewUser.get('hiddenField')?.valueChanges.subscribe(value => {
+          if (value !== '') {
+            console.log('Alerta: Intento de relleno automático detectado en el campo oculto');
+            this.alertMessage = '¡Alerta! Intento de relleno automático detectado en el campo oculto.';
+            this.AlertMessage = true;
+            // Puedes agregar aquí la lógica para mostrar la alerta en la interfaz
+          }
+        });
+      }
+
+
     //Constructor para las rutas de navegación de la pagina
     constructor (
         private userService: UsersService,

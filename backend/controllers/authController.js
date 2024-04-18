@@ -1,6 +1,7 @@
 import {User} from "../models/authModel.js"
 import bcrypt from "bcrypt"
 import jwt from "jsonwebtoken";
+import { tokenExpirationTime } from "../middlewares/timeOutMiddleware.js";
 
 //codifcar: los enviamos de un luar a otro sin exponerlo, perono estan seguros
 //encriptar o llave publica/privada: generqa un hash a traves de algoritmos pero se itera cada cierto tiempo con un algoritmo
@@ -47,19 +48,28 @@ export const Login = async (req, res) => {
             return res.status(400).json({message: "Usuario invalido"})
         } else{
             const validPassword = await bcrypt.compare(password, user.password) 
-            if (!validPassword) { 
-                return res.status(400).json({message: "Contraseña o user incorrectos"}) 
-            };
-        }
-        //Tras el login se genera un token
-        const tokenLog = jwt.sign({ //firmo y elijo la info que quiero enviar con el token
-            username: username,
-            password: user.password,
-        }, process.env.JWT_SECRET) 
+            if (!validPassword) {
+                // Incrementar el contador de intentos fallidos de inicio de sesión
+                req.session.loginAttempts = req.session.loginAttempts ? req.session.loginAttempts + 1 : 1;
+                // Comprobar si se excedió el límite de intentos
+                if (req.session.loginAttempts >= 3) {
+                    // Reiniciar el contador de intentos fallidos
+                    req.session.loginAttempts = 0;
+                    return res.status(400).json({ message: "Demasiados intentos fallidos, inténtelo de nuevo más tarde" })
+                } 
+            return res.status(400).json({message: "Contraseña o user incorrectos"}) 
+        };
+    }
+    // // Reiniciar el contador de intentos fallidos si el inicio de sesión es exitoso
+    // req.session.loginAttempts = 0;
 
-        //Guardo la clave en un header que llamo tokenAuth y le paso la constante del token (tokenLog)
-        res.header ({ "auth": tokenLog})
-        res.status(200).json({message: "Login successfull", tokenLog})
+    //Tras el login se genera un token //"firmo" con metodo sign y elijo la info que quiero enviar con el token
+    const tokenLog = jwt.sign({ username: username, password: user.password }, process.env.JWT_SECRET, {
+        expiresIn: tokenExpirationTime,
+    }) 
+    //Guardo la clave en un header que llamo tokenAuth y le paso la constante del token (tokenLog)
+    await res.header ({ "auth": tokenLog })
+    res.status(200).json({message: "Login successfull", tokenLog})
         
     } catch (error) {
         res.status(500).json({message: "Could not log in", error})

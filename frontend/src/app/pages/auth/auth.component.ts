@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UsersService } from '../../service/users.service';
@@ -24,6 +24,19 @@ export class AuthComponent {
   showAlert= false;
   alertMessage: string = '';
   AlertMessage = false
+
+  //Alerta campos ocultos
+  ngOnInit(): void {
+    // Agrega un evento de detección de cambios en el campo oculto
+    this.formUser.get('hiddenField')?.valueChanges.subscribe(value => {
+      if (value !== '') {
+        console.log('Alerta: Intento de relleno automático detectado en el campo oculto');
+        this.alertMessage = '¡Alerta! Intento de relleno automático detectado en el campo oculto.';
+        this.AlertMessage = true;
+        // Puedes agregar aquí la lógica para mostrar la alerta en la interfaz
+      }
+    });
+  }
 
   constructor(private router: Router, private userService: UsersService) {}
 
@@ -57,42 +70,34 @@ showTermsError = false;
 
 onSubmit() {
     if (this.formUser.valid) {
-        const credentials = {
-            username: this.formUser.value.username,
-            password: this.formUser.value.password
-        };
+      const credentials = {
+        username: this.formUser.value.username,
+        password: this.formUser.value.password
+      };
 
-        this.userService.loginUser(credentials).subscribe(
-            (response) => {
-                console.log('Login con éxito:', response);
-                localStorage.setItem('token de admin',response.tokenLog)
-                this.alertMessage = '¡Bienvenido, ' + credentials.username + '!';
-                this.AlertMessage = true;
-                setTimeout(() => {
-                    this.navigateToHome();
-                }, 2000);
-            },
-            (error) => {
-                console.error('Error al logear:', error);
-                this.alertMessage = 'Error en usuario/contraseña';
-                this.AlertMessage = true; // Mostrar la alerta
-                this.showAlert = true;
-
-                // Ocultar la alerta después de 3 segundos
-                setTimeout(() => {
-                    this.AlertMessage = false;
-                }, 2000);
-            }
-        );
+      this.userService.loginUser(credentials).subscribe(
+        (response: any) => {
+          console.log('Login exitoso:', response);
+          localStorage.setItem('token de admin', response.tokenLog);
+          this.navigateToHome();
+        },
+        (error: any) => {
+          console.error('Error en el login:', error);
+          if (error.status === 400 && error.error.message === "Demasiados intentos fallidos, inténtelo de nuevo más tarde") {
+              this.alertMessage = 'Demasiados intentos fallidos, inténtelo de nuevo más tarde';
+              this.showAlert = true;
+              // Desactivar el formulario
+              this.formUser.disable();
+            } else {
+            this.alertMessage = 'Error en usuario/contraseña';
+            this.showAlert = true;
+          }
+          console.log(this.formUser)
+        }
+      );
     } else {
-        this.alertMessage = 'Por favor, complete todos los campos correctamente.';
-        this.AlertMessage = true; // Mostrar la alerta
-        this.showAlert = true;
-        setTimeout(() => {
-            this.AlertMessage = false;
-        }, 2000);
+      this.alertMessage = 'Por favor, complete todos los campos correctamente.';
+      this.showAlert = true;
     }
-}
-
-
   }
+}
