@@ -15,7 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.css']
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit{
   formUser = new FormGroup({
       'username': new FormControl('', [Validators.required]),
       'password': new FormControl('', [Validators.required]),
@@ -32,8 +32,7 @@ export class AuthComponent {
       if (value !== '') {
         console.log('Alerta: Intento de relleno automático detectado en el campo oculto');
         this.alertMessage = '¡Alerta! Intento de relleno automático detectado en el campo oculto.';
-        this.AlertMessage = true;
-        // Puedes agregar aquí la lógica para mostrar la alerta en la interfaz
+        this.showAlert = true;
       }
     });
   }
@@ -92,7 +91,6 @@ onSubmit() {
             this.alertMessage = 'Error en usuario/contraseña';
             this.showAlert = true;
           }
-          console.log(this.formUser)
         }
       );
     } else {

@@ -3,7 +3,8 @@
 <!-- Cabecera Registro -->
 <div class="pt-4 pl-6">
     <button class="btn text-xs bg-transparent border border-black text-black hover:bg-black hover:text-white mb-4 text-center"
-        (click)="navigateToHeroLanding()">Back</button>
+        (click)="navigateToHeroLanding()">Back
+    </button>
     <h2 class="mx-auto max-w-md mb-5 mt-5 text-center text-3xl">Registro</h2>
 </div>
 
@@ -166,6 +167,13 @@
             (click)="onSubmit()">
             Enviar
         </button>
+    </div>
+
+    <!--Alerta hidden field -->
+    <div *ngIf=showAlert class="fixed inset-0 flex items-center justify-center">
+        <div class="bg-gray-800 text-white py-2 px-4 rounded-md">
+            {{ alertMessage }}
+        </div>
     </div>
 </form>
 <app-footer></app-footer>

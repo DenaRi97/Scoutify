@@ -55,8 +55,8 @@
             <button class="btn px-10 lg:px-20 bg-[#F2D16D] border border-transparent text-center hover:bg-transparent hover:border-yellow-400 text-sm" (click)="onSubmit()"> Entrar </button>
         </div>
     
-        <!-- Agrega esto donde quieras que aparezca la alerta -->
-        <div *ngIf=AlertMessage class="fixed inset-0 flex items-center justify-center">
+        <!-- Alerta hidden field -->
+        <div *ngIf=showAlert class="fixed inset-0 flex items-center justify-center">
             <div class="bg-gray-800 text-white py-2 px-4 rounded-md">
                 {{ alertMessage }}
             </div>
