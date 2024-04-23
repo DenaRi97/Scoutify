@@ -1,6 +1,6 @@
 import express from "express";
 import { Login, Register } from "../controllers/authController.js";
-import { limitLogin } from "../middlewares/timeOutMiddleware.js";
+import limitLogin from "../middlewares/timeOutMiddleware.js";
 
 const authRouter = express.Router() //Constante para exportar el router
 
