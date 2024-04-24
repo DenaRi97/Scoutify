@@ -120,9 +120,9 @@ export class AuthRegComponent implements OnInit {
                 }
             }
         }
-        return true; 
+        return this.reCAPTCHAToken !== null; // Verifica si el token del captcha está presente 
     }
-    showTermsError = false; // Variable to track the error message for terms acceptance
+ showTermsError = false; // Variable to track the error message for terms acceptance
 
     private handleToken(token: string) {
         console.log('Received token:', token);
@@ -157,7 +157,7 @@ export class AuthRegComponent implements OnInit {
                     console.error('Error al crear el usuario:', error);
                 }           
             );
-            //Maneja submit token del captcha
+            //Maneja submit token del captcha en el back (no implementado)
             // this.recaptchaV3Service.execute('importantAction').subscribe((token: string) => {
             //     if (token) { //verifica si el token no es nulo
             //         this.tokenVisible = true;
