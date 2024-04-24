@@ -126,6 +126,17 @@
         </div>
     </section>
 
+    <!-- CAPTCHA -->
+    <section class="flex flex-col items-center m-4">
+        <div class="g-recaptcha" data-sitekey="6LeF0LwpAAAAACQtZffPMePqsmN6ZzqFGXogpn5u" data-action="SIGNUP"></div>
+        <div *ngIf="tokenVisible"> reCAPTCHA Token <br />
+            <p style="color: red">{{reCAPTCHAToken}}</p>
+        </div>
+        <!-- <div>
+            <span class="label-text text-red-500 text-xs">Comprobación de seguridad obligatoria</span>
+        </div> -->
+    </section>
+
     <!-- TÉRMINOS Y REDIRECCIÓN -->
     <section class="mx-auto max-w-md">
         <div class="form-control flex items-center justify-center mb-2">
@@ -146,14 +157,6 @@
                         (click)="navigateToAuth()">¿Ya tienes cuenta?</button>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- CAPTCHA -->
-    <section>
-        <div class="g-recaptcha" data-sitekey="6LeF0LwpAAAAACQtZffPMePqsmN6ZzqFGXogpn5u" data-action="SIGNUP"></div>
-        <div *ngIf="tokenVisible"> reCAPTCHA Token <br />
-            <p style="color: red">{{reCAPTCHAToken}}</p>
         </div>
     </section>
     

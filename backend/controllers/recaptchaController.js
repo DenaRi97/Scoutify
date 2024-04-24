@@ -1,3 +1,5 @@
+//No implementado
+
 // const Recaptcha = require('recaptcha-validator');
 
 // // Configura las claves de sitio y secreto de reCAPTCHA
