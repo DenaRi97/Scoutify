@@ -89,21 +89,22 @@ onSubmit() {
         },
         (error: any) => {
           console.error('Error en el login:', error);
-          if (error.status === 429 && error.error.message === "Too many fail requests, try in again in 15 minutes") {
-              this.alertMessage = 'Demasiados intentos fallidos, inténtelo de nuevo más tarde';
-              this.showAlert = true;
-              setTimeout(() => {
-                this.hideAlert()
-              }, 3000);
-              // Desactivar el formulario
-              this.formUser.disable();
-            } else {
+          if (error.status === 400) {
             this.alertMessage = 'Error en usuario/contraseña';
             this.showAlert = true;
             setTimeout(() => {
               this.hideAlert()
             }, 3000);
-          }
+            } else {
+              error.status === 429
+              this.alertMessage = 'Demasiados intentos fallidos, inténtelo de nuevo más tarde';
+              this.showAlert = true;
+              setTimeout(() => {
+                this.hideAlert()
+              }, 5000);
+              // Desactivar el formulario
+              this.formUser.disable();
+           }
         }
       );
     } else {
