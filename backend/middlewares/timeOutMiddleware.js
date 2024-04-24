@@ -7,7 +7,7 @@ export const tokenExpirationTime = 3 * 60 * 60 * 1000
 const limitLogin = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 min
     max: 3, // Max number of entries to try log in
-    message: 'Too many fail requests, try in again in 15 minutes',
+    message: 'Too many failed requests, try in again in 15 minutes',
 })
 
 export default limitLogin

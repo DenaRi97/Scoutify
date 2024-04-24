@@ -21,18 +21,25 @@ export class AuthComponent implements OnInit{
       'password': new FormControl('', [Validators.required]),
       'hiddenField': new FormControl('') // Agrega este control para el campo oculto
   });
+
+  //Alertas
   showAlert= false;
   alertMessage: string = '';
-  AlertMessage = false
+  AlertMessage = false;
+  hideAlert() {
+    this.showAlert = false;
+  }
 
   //Alerta campos ocultos
   ngOnInit(): void {
     // Agrega un evento de detección de cambios en el campo oculto
     this.formUser.get('hiddenField')?.valueChanges.subscribe(value => {
       if (value !== '') {
-        console.log('Alerta: Intento de relleno automático detectado en el campo oculto');
-        this.alertMessage = '¡Alerta! Intento de relleno automático detectado en el campo oculto.';
+        this.alertMessage = 'Intento de relleno automatizado. Bloqueando acceso.';
         this.showAlert = true;
+        setTimeout(() => {
+          this.hideAlert();
+        }, 5000);
       }
     });
   }
@@ -82,14 +89,20 @@ onSubmit() {
         },
         (error: any) => {
           console.error('Error en el login:', error);
-          if (error.status === 400 && error.error.message === "Demasiados intentos fallidos, inténtelo de nuevo más tarde") {
+          if (error.status === 429 && error.error.message === "Too many fail requests, try in again in 15 minutes") {
               this.alertMessage = 'Demasiados intentos fallidos, inténtelo de nuevo más tarde';
               this.showAlert = true;
+              setTimeout(() => {
+                this.hideAlert()
+              }, 3000);
               // Desactivar el formulario
               this.formUser.disable();
             } else {
             this.alertMessage = 'Error en usuario/contraseña';
             this.showAlert = true;
+            setTimeout(() => {
+              this.hideAlert()
+            }, 3000);
           }
         }
       );
@@ -97,5 +110,8 @@ onSubmit() {
       this.alertMessage = 'Por favor, complete todos los campos correctamente.';
       this.showAlert = true;
     }
+    setTimeout(() => {
+      this.hideAlert();
+    }, 3000);
   }
 }

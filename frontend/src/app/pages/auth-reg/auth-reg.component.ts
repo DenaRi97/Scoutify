@@ -65,8 +65,7 @@ export class AuthRegComponent implements OnInit {
         // Agrega un evento de detección de cambios en el campo oculto
         this.formNewUser.get('hiddenField')?.valueChanges.subscribe(value => {
           if (value !== '') {
-            console.log('Alerta: Intento de relleno automático detectado en el campo oculto');
-            this.alertMessage = '¡Alerta! Intento de relleno automático detectado en el campo oculto.';
+            this.alertMessage = 'Intento de relleno automatizado. Bloqueando acceso.';
             this.showAlert = true;
           }
         });
