@@ -141,7 +141,7 @@ export class AuthRegComponent implements OnInit {
 
     //ONSUBMIT
     onSubmit() {
-        if (this.formNewUser.valid && !this.formNewUser.errors?.['mismatch'] && this.formNewUser.get('terms')?.value && this.reCAPTCHAToken) {
+        if (this.formNewUser.valid && !this.formNewUser.errors?.['mismatch'] && this.formNewUser.get('terms')?.value && !this.reCAPTCHAToken) {
             // Hide the error message if there's no error
             this.showTermsError = false;
             // Llama al servicio para crear el nuevo usuario
