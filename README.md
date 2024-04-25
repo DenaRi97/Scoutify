@@ -53,7 +53,7 @@ Finalmente, abre tu navegador web y visita [http://localhost:4200](http://localh
 
 ## Deployment :stars:
 
-También puedes simplemente visitar nuestro despliegue de la aplicación: [enlace al despliegue](aquí_va_el_enlace)
+También puedes simplemente visitar nuestro despliegue de la aplicación: (https://scoutify-clone.netlify.app/)
 
 ## Features
 Nuestra aplicación ofrece las siguientes funcionalidades principales:
@@ -67,6 +67,9 @@ Nuestra aplicación ofrece las siguientes funcionalidades principales:
 - Registro estatístico: La aplicación cuenta con una gáfica comparativa de habilidades entre jugadores, además de una vista gráficapor cada jugadores de sus registros de habilidad.
 
 - Seguridad: La seguridad de los datos de los usuarios es una prioridad. Implementamos medidas de seguridad robustas para proteger la información confidencial.
+
+## Auditoría de Seguridad
+
 ## Tech Stack :cd:
 Nuestra aplicación utiliza el siguiente stack tecnológico:
 
@@ -82,6 +85,7 @@ Nuestra aplicación utiliza el siguiente stack tecnológico:
 **Server:** ![NPM](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white) ![Node](https://img.shields.io/badge/Node%20js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)![Express](https://img.shields.io/badge/Express%20js-000000?style=for-the-badge&logo=express&logoColor=white)![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 
 **Testing:** ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=Postman&logoColor=white) ![Jest](https://img.shields.io/badge/Jest-C21325?style=for-the-badge&logo=jest&logoColor=white)
+
 ## Desarrolladores :trophy:
 
 - :man_technologist: [@JeanCarlosPerez](https://github.com/JeanCarlosPerez) como Scrum Master
@@ -94,10 +98,8 @@ Nuestra aplicación utiliza el siguiente stack tecnológico:
 
 - :woman_technologist: [@angarce25](https://github.com/angarce25)
 
-## ¡Gracias!
-
 ## Documentación
 
 :art:[Figma](https://www.figma.com/file/vLIheYKJB9lvBT8WcwNyfL/ScouzPro?type=design&node-id=0%3A1&mode=design&t=aOTNPTg4N8qUA3tE-1):card_index_dividers:[Trello](https://trello.com/b/0XztzvWY/scouz-pro):desktop_computer:[Repo](https://github.com/ScouzPro/ScouzPro)
-## ¡Gracias por usar Scoutify! Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto con nosotros. ¡Que disfrutes reclutando talentos futbolísticos! :soccer:
 
+## ¡Gracias por usar Scoutify! Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto con nosotros. ¡Que disfrutes reclutando talentos futbolísticos! :soccer:
