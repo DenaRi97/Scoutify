@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { NavbarComponent } from "../../components/navbar/navbar.component";
-import { FooterComponent } from "../../components/footer/footer.component";
+import { NavbarComponent } from "../../../components/navbar/navbar.component";
+import { FooterComponent } from "../../../components/footer/footer.component";
 import { RouterLink } from "@angular/router";
-import { VideosComponent } from "../../components/videos/videos.component";
-import { PlayerServiceService } from "../../service/player-service.service";
+import { VideosComponent } from "../../../components/videos/videos.component";
+import { PlayerServiceService } from "../../../service/player-service.service";
 import { CommonModule } from "@angular/common";
 import { NgxPaginationModule } from "ngx-pagination";
 import { FormsModule } from "@angular/forms";

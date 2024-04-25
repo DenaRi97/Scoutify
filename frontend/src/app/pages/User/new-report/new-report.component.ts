@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, } from '@angular/router';
-import { PlayerServiceService } from '../../service/player-service.service';
-import { MetricsService } from '../../service/metrics.service';
+import { PlayerServiceService } from '../../../service/player-service.service';
+import { MetricsService } from '../../../service/metrics.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { NavbarComponent } from '../../components/navbar/navbar.component';
-import { FooterComponent } from '../../components/footer/footer.component';
+import { NavbarComponent } from '../../../components/navbar/navbar.component';
+import { FooterComponent } from '../../../components/footer/footer.component';
 
 
 @Component({
