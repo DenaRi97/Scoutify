@@ -1,16 +1,15 @@
 import { Routes } from '@angular/router';
-import { PlayersComponent } from './pages/players/players.component';
-import { ReportsComponent } from './pages/reports/reports.component';
-import { AuthComponent } from './pages/auth/auth.component';
+import { PlayersComponent } from './pages/User/players/players.component';
+import { ReportsComponent } from './pages/User/reports/reports.component';
+import { AuthComponent } from './pages/Admin/auth/auth.component';
 import { HeroLandingComponent } from './components/hero-landing/hero-landing.component';
-import { HomeComponent } from './pages/home/home.component';
-import { AuthRegComponent } from './pages/auth-reg/auth-reg.component';
-import { DetailComponent } from './pages/detail/detail.component';
-import { NewReportComponent } from './pages/new-report/new-report.component';
-import { GraphComponent } from './pages/graph/graph.component';
+import { HomeComponent } from './pages/User/home/home.component';
+import { AuthRegComponent } from './pages/Admin/auth-reg/auth-reg.component';
+import { DetailComponent } from './pages/User/detail/detail.component';
+import { NewReportComponent } from './pages/User/new-report/new-report.component';
+import { GraphComponent } from './pages/User/graph/graph.component';
 import { blockPage } from './guards/loginBlock';
-
-
+import { DashboardComponent } from './pages/Admin/dashboard/dashboard.component';
 
 
 
@@ -49,14 +48,19 @@ export const routes: Routes = [
         canActivate : [blockPage]
     },
     {
-    path: 'players/:id',
-    component: NewReportComponent,
-    canActivate : [blockPage]
+        path: 'players/:id',
+        component: NewReportComponent,
+        canActivate : [blockPage]
     },
     {
-     path: 'graph',
-     component: GraphComponent,
-     canActivate : [blockPage]
+        path: 'graph',
+        component: GraphComponent,
+        canActivate : [blockPage]
+    },
+    {
+        path: 'dashboard',  //Admin paths
+        component: DashboardComponent,
+        // canActivate : [blockPage]
     },
 
 ];
