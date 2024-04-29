@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Scoutify</string>
+    <string name="title_activity_main">Scoutify</string>
+    <string name="package_name">scoutify.app</string>
+    <string name="custom_url_scheme">scoutify.app</string>
+</resources>
