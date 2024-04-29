@@ -69,10 +69,12 @@ Nuestra aplicación ofrece las siguientes funcionalidades principales:
 - Seguridad: La seguridad de los datos de los usuarios es una prioridad. Implementamos medidas de seguridad robustas para proteger la información confidencial.
 
 ## Auditoría de Seguridad
- #Puedes encontrar los informes detallados de la auditoría en [esta carpeta] (https://drive.google.com/drive/folders/1YH10k_Hu3rLHFi2bbyVlUlKuLoAl2dkK?usp=drive_link)
+ ### Puedes encontrar los informes detallados de la auditoría en [esta carpeta](https://drive.google.com/drive/folders/1VbTvAuEa2qrxj7jduQGv6-sK0qOUWcjo?usp=sharing)
 
-Se ha realizado una auditorías pertinente a la seguridad del sitio web, de la cual se ha concluido que el sitio web podría beneficiarse de las siguientes sugerencias para mejorar su seguridad:
-- 
+### Se ha realizado una auditorías pertinente a la seguridad del sitio web, de la cual se han concluido las siguientes vulnerabilidades:
+- Falta de encabezados de políticas de seguridad de contenido (CSP)
+- Falta de encabezados de seguridad de Strict-Transport-Security Header (STSH)
+- Inclusión de archivos JavaScript de dominios cruzados.
 - 
 
 ## Tech Stack :cd:
