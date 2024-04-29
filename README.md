@@ -60,7 +60,7 @@ Nuestra aplicación ofrece las siguientes funcionalidades principales:
 
 - Registro de Jugadores: Los reclutadors pueden registrar nuevos fichajes en la plataforma y proporcionar detalles sobre su historial deportivo, habilidades y estadísticas.
 
-- Creación de informes: Los ojdeadores pueden realizar varios informes sobre cada jugador, calificando su desempeño en cada partido
+- Creación de Informes: Los ojedeadores pueden realizar varios informes sobre cada jugador, calificando su desempeño en cada partido
 
 - Gestión de Perfiles: Los reclutadores pueden gestionar los perfiles de los jugadores, agregar comentarios, realizar seguimientos y calificar el potencial de los jugadores.
 
@@ -75,7 +75,6 @@ Nuestra aplicación ofrece las siguientes funcionalidades principales:
 - Falta de encabezados de políticas de seguridad de contenido (CSP)
 - Falta de encabezados de seguridad de Strict-Transport-Security Header (STSH)
 - Inclusión de archivos JavaScript de dominios cruzados.
-- 
 
 ## Tech Stack :cd:
 Nuestra aplicación utiliza el siguiente stack tecnológico:
