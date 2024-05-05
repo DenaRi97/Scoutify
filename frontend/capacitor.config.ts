@@ -3,11 +3,11 @@ import type { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
   appId: 'scoutify.app',
   appName: 'Scoutify',
-  webDir: 'src',
+  webDir: 'dist/server/browser',
   plugins: {
-    android: {
-      CAPACITOR_ANDROID_STUDIO_PATH: 'C:\Program Files\Android\Android Studio'
-    }
+    // android: {
+    //   CAPACITOR_ANDROID_STUDIO_PATH: 'C:\Program Files\Android\Android Studio'
+    // }
     }
 };
 
